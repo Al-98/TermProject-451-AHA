@@ -1,3 +1,8 @@
+Team Members: 
+Al-muatasim Al-habsi
+Hongbo Wang
+Aldo Zepeda-Lopez 
+
 CREATE TABLE Users(
 	userID CHAR(9),
 	firstName CHAR(15) NOT NULL,
