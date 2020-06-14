@@ -61,3 +61,20 @@ BEFORE UPDATE ON isCat
 FOR EACH ROW 
 WHEN (NEW.businessID is NOT NULL)
 EXECUTE PROCEDURE addCategory();
+
+CREATE OR REPLACE FUNCTION addFriend() RETURNS trigger AS '
+BEGIN
+    INSERT INTO Users
+    (SELECT NEW.friendID as userID, NULL as firstName, NULL as lastName, NULL as joinDate, NULL as latitude, NULL as longitude, NULL as avgSatrs, NULL as numOfFans,NULL as numOfVotes, NULL as numOfCheckIns
+    WHERE NOT EXISTS (SELECT *
+                      FROM Users
+                      WHERE Users.userID=NEW.friendID));    
+    RETURN NEW;
+END
+'  LANGUAGE plpgsql;
+
+CREATE TRIGGER insertFriend
+BEFORE INSERT ON Friends
+FOR EACH ROW 
+WHEN (NEW.userID is NOT NULL)
+EXECUTE PROCEDURE addFriend();
