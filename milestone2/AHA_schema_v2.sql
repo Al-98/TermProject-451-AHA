@@ -5,8 +5,8 @@
 
 CREATE TABLE Users(
 	userID CHAR(22),
-	firstName CHAR(20),
-	lastName CHAR(20),
+	firstName VARCHAR(50),
+	lastName VARCHAR(50),
 	joinDate DATE,
 	latitude REAL,
 	longitude REAL,
@@ -21,8 +21,8 @@ CREATE TABLE Users(
 
 CREATE TABLE Business(
 	businessID CHAR(22),
-	name VARCHAR(50),
-	address CHAR(50),
+	name VARCHAR(100),
+	address CHAR(100),
 	city VARCHAR(20),
 	state CHAR(2),
 	zipCode CHAR(5),
@@ -43,9 +43,9 @@ CREATE TABLE Business(
 CREATE TABLE Review(
 	reviewID CHAR(22),
 	reviewDate DATE,
-	reviewText VARCHAR(600),
+	reviewText VARCHAR(2000),
     stars Real,
-	userID CHAR(9),
+	userID CHAR(22),
 	businessID CHAR(22),
 	PRIMARY KEY (reviewID,userID,businessID),
 	FOREIGN KEY (userID) REFERENCES Users(userID),
@@ -81,13 +81,13 @@ CREATE TABLE Favorite(
 );
 
 CREATE TABLE Categories(
-	category VARCHAR(30),
+	category VARCHAR(35),
 	PRIMARY KEY (category)
 );
 
 CREATE TABLE isCat(
 	businessID CHAR(22),
-	category VARCHAR(30),
+	category VARCHAR(35),
 	PRIMARY KEY (category,businessID),
 	FOREIGN KEY (category) REFERENCES Categories(category),
 	FOREIGN KEY (businessID) REFERENCES Business(businessID)
