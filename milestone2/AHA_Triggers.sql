@@ -1,4 +1,6 @@
-\siness as b1
+CREATE OR REPLACE FUNCTION newReview() RETURNS trigger AS '
+BEGIN
+    UPDATE Bsiness as b1
     SET numOfReviews = (SELECT COUNT(reviewID) FROM Review as r1 WHERE r1.businessID=b1.businessID)
     WHERE b1.businessID=NEW.businessID;
     UPDATE Business as b2
@@ -18,7 +20,7 @@ EXECUTE PROCEDURE newReview();
 CREATE OR REPLACE FUNCTION updateCheckIns() RETURNS trigger AS '
 BEGIN
     UPDATE Business as b1
-    SET numOfCheckIns = (SELECT SUM(numOfCheckIns) FROM CheckIn as c1 WHERE c1.businessID=b1.businessID)
+    SET Business.numOfCheckIns = (SELECT SUM(numOfCheckIns) FROM CheckIn as c1 WHERE c1.businessID=b1.businessID)
     WHERE b1.businessID=NEW.businessID;    
     RETURN NEW;
 END

@@ -6,14 +6,14 @@
 CREATE TABLE Users(
 	userID CHAR(9),
 	firstName CHAR(15) NOT NULL,
-	lastName CHAR(20) ) NOT NULL,
+	lastName CHAR(20) NOT NULL,
 	joinDate DATE,
 	latitude REAL,
 	longitude REAL,
 	avgStars REAL,
 	numOfFans INTEGER Check(numOfFans>=0),
-	numOfVotes INTEGER Check(numOf Check(numOfVotes>=0),
-	PRIMARY KEY (userId)
+	numOfVotes INTEGER Check(numOfVotes>=0),
+	PRIMARY KEY (userId),
 	CHECK(avgStars>=0),
 	CHECK(avgStars<=5)
 );
@@ -48,8 +48,8 @@ CREATE TABLE Review(
 	userID CHAR(9),
 	businessID CHAR(22),
 	PRIMARY KEY (reviewID,userID,businessID),
-	FOREIGN KEY (userID) REFERENCES Users(userID)
-	FOREIGN KEY (businessID) REFERENCES Business(businessID)
+	FOREIGN KEY (userID) REFERENCES Users(userID),
+	FOREIGN KEY (businessID) REFERENCES Business(businessID),
 	CHECK(stars>=0),
 	CHECK(stars<=5)
 );
@@ -58,7 +58,7 @@ CREATE TABLE Friends(
 	userID CHAR(9),
 	friendID CHAR(9),
 	PRIMARY KEY (userID,friendID),
-	FOREIGN KEY (userID) REFERENCES Users(userID)
+	FOREIGN KEY (userID) REFERENCES Users(userID),
 	FOREIGN KEY (friendID) REFERENCES Users(userID)
 );
 --Note: should have derived attributes; latest Review and latest tip
@@ -76,7 +76,7 @@ CREATE TABLE Favorite(
 	userID CHAR(9),
 	businessID CHAR(22),
 	PRIMARY KEY (userID,businessID),
-	FOREIGN KEY (userID) REFERENCES User(userID),
+	FOREIGN KEY (userID) REFERENCES Users(userID),
 	FOREIGN KEY (businessID) REFERENCES Business(businessID)
 );
 
