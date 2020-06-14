@@ -4,9 +4,9 @@
 --Aldo Zepeda-Lopez 
 
 CREATE TABLE Users(
-	userID CHAR(9),
-	firstName CHAR(15) NOT NULL,
-	lastName CHAR(20) NOT NULL,
+	userID CHAR(22),
+	firstName CHAR(20),
+	lastName CHAR(20),
 	joinDate DATE,
 	latitude REAL,
 	longitude REAL,
@@ -43,7 +43,7 @@ CREATE TABLE Business(
 CREATE TABLE Review(
 	reviewID CHAR(22),
 	reviewDate DATE,
-	reviewText VARCHAR(500),
+	reviewText VARCHAR(600),
     stars Real,
 	userID CHAR(9),
 	businessID CHAR(22),
@@ -55,8 +55,8 @@ CREATE TABLE Review(
 );
 
 CREATE TABLE Friends(
-	userID CHAR(9),
-	friendID CHAR(9),
+	userID CHAR(22),
+	friendID CHAR(22),
 	PRIMARY KEY (userID,friendID),
 	FOREIGN KEY (userID) REFERENCES Users(userID),
 	FOREIGN KEY (friendID) REFERENCES Users(userID)
@@ -73,7 +73,7 @@ CREATE TABLE CheckIn(
 );
 
 CREATE TABLE Favorite(
-	userID CHAR(9),
+	userID CHAR(22),
 	businessID CHAR(22),
 	PRIMARY KEY (userID,businessID),
 	FOREIGN KEY (userID) REFERENCES Users(userID),
@@ -81,13 +81,13 @@ CREATE TABLE Favorite(
 );
 
 CREATE TABLE Categories(
-	category VARCHAR(20),
+	category VARCHAR(30),
 	PRIMARY KEY (category)
 );
 
 CREATE TABLE isCat(
 	businessID CHAR(22),
-	category CHAR(20),
+	category VARCHAR(30),
 	PRIMARY KEY (category,businessID),
 	FOREIGN KEY (category) REFERENCES Categories(category),
 	FOREIGN KEY (businessID) REFERENCES Business(businessID)
