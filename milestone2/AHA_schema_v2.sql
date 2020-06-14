@@ -4,7 +4,7 @@
 --Aldo Zepeda-Lopez 
 
 CREATE TABLE Users(
-	userID CHAR(22),
+	userID CHAR(9),
 	firstName CHAR(15) NOT NULL,
 	lastName CHAR(20) NOT NULL,
 	joinDate DATE,
@@ -12,11 +12,7 @@ CREATE TABLE Users(
 	longitude REAL,
 	avgStars REAL,
 	numOfFans INTEGER Check(numOfFans>=0),
-<<<<<<< HEAD
-	numOfVotes INTEGER Check((numOfVotes>=0)),
-=======
 	numOfVotes INTEGER Check(numOfVotes>=0),
->>>>>>> 3f9df08d72b862fd1520d84f5b3157f4f30116ba
 	PRIMARY KEY (userId),
 	CHECK(avgStars>=0),
 	CHECK(avgStars<=5)
@@ -36,7 +32,6 @@ CREATE TABLE Business(
 	starRating REAL,
 	numOfReviews INTEGER Check(numOfReviews>=0),
 	numOfCheckIns INTEGER Check(numOfCheckIns>=0),
-	--openstatus
 	PRIMARY KEY (businessID),
 	CHECK(avgReview>=0),
 	CHECK(avgReview<=5),
@@ -50,7 +45,7 @@ CREATE TABLE Review(
 	reviewDate DATE,
 	reviewText VARCHAR(500),
     stars Real,
-	userID CHAR(22),
+	userID CHAR(9),
 	businessID CHAR(22),
 	PRIMARY KEY (reviewID,userID,businessID),
 	FOREIGN KEY (userID) REFERENCES Users(userID),
@@ -60,8 +55,8 @@ CREATE TABLE Review(
 );
 
 CREATE TABLE Friends(
-	userID CHAR(22),
-	friendID CHAR(22),
+	userID CHAR(9),
+	friendID CHAR(9),
 	PRIMARY KEY (userID,friendID),
 	FOREIGN KEY (userID) REFERENCES Users(userID),
 	FOREIGN KEY (friendID) REFERENCES Users(userID)
