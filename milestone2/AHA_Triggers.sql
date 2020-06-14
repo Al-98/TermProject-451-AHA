@@ -61,15 +61,3 @@ BEFORE UPDATE ON isCat
 FOR EACH ROW 
 WHEN (NEW.businessID is NOT NULL)
 EXECUTE PROCEDURE addCategory();
-
-CREATE OR REPLACE FUNCTION addCategory() RETURNS trigger AS '
-BEGIN
-    INSERT INTO Categories
-    (SELECT NEW.category AS category)
-    WHERE NOT EXISTS (SELECT *
-                      FROM Categories
-                      WHERE Categories.category=NEW.category);    
-    RETURN NEW;
-END
-'  LANGUAGE plpgsql;
-
