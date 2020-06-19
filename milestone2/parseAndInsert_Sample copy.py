@@ -194,9 +194,7 @@ def insert2CheckinTable():
                         sql_str1="INSERT INTO CheckIn (businessID,weekday,checkinTime,numOfCheckIns) " \
                                 "VALUES ('"+ cleanStr4SQL(data['business_id'])+"','"+str(key)+"','"+str(time)+"',"+str(chekins)+");"
                         # print(sql_str1)
-                    
-
-                cur.execute(sql_str1)
+                        cur.execute(sql_str1)
         
                 
                 
