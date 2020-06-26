@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,13 +30,9 @@ namespace milestone1
             public string name { get; set; }
             public string state { get; set; }
             public string city { get; set; }
-
             public string Zipcode { get; set; } 
-
-
-
-
         }
+
         public class Categories
         {
             // uncommet out below to run code
@@ -56,7 +53,7 @@ namespace milestone1
         }
         private string buildConnectionString()
         {
-            return "Host = localhost; Username = postgres; Database = milstone2DB; password= 123@";
+            return "Host = localhost; Username = postgres; Database = milestone3db; password= ' '";
         }
         private void addState()
         {
@@ -163,10 +160,6 @@ namespace milestone1
 
 
 
-
-
-
-
         }
 
         private void executeQuery(string sqlstr, Action<NpgsqlDataReader> myf)
@@ -251,10 +244,16 @@ namespace milestone1
         {
             if (businessGrid.SelectedIndex > -1)
             {
+                string currentUser = "";   //"---1lKK3aKOuomHnwAkAow";
+                if (listUserIds.SelectedIndex > -1)
+                {
+                    currentUser = listUserIds.SelectedItem.ToString();
+                }
+
                 Business B = businessGrid.Items[businessGrid.SelectedIndex] as Business;
                 if ((B.bid != null) && (B.bid.ToString().CompareTo("") != 0))
                 {
-                    BusinessDetails businesssWindow = new BusinessDetails(B.bid.ToString());
+                    BusinessDetails businesssWindow = new BusinessDetails(B.bid.ToString(), currentUser);
                     businesssWindow.Show();
                 }
 
@@ -310,6 +309,30 @@ namespace milestone1
 
                 executeQuery(sqlStr, addGridRow);
             }
+        }
+
+        private void remove_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void typeName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            listUserIds.Items.Clear();
+            if (typeName.Text != "")
+            {
+                string sqlStr = "select userid from users where firstname like '" + typeName.Text + "%';";
+                executeQuery(sqlStr, addUserIds);
+            }
+        }
+
+        private void addUserIds(NpgsqlDataReader R)
+        {
+            listUserIds.Items.Add(R.GetString(0));
+        }
+
+        private void listUserIds_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
         }
     }
 }

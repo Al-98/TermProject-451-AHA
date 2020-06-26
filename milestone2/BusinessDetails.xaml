@@ -5,19 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:milestone1"
         mc:Ignorable="d"
-        Title="BusinessDetails" Height="450" Width="800">
-    <Grid>
+        Title="BusinessDetails" Height="588.037" Width="1164.756">
+    <Grid Margin="0,-10,2,1">
         <Label Content="business Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Label Content="State" HorizontalAlignment="Left" Margin="239,10,0,0" VerticalAlignment="Top"/>
         <Label Content="City" HorizontalAlignment="Left" Margin="342,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="bname" HorizontalAlignment="Left" Height="23" Margin="105,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="state" HorizontalAlignment="Left" Height="23" Margin="281,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
-        <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="377,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Number of business in the same state:" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Width="246"/>
-        <Label Content="Number of business in the same city:" HorizontalAlignment="Left" Margin="310,41,0,0" VerticalAlignment="Top" Width="215"/>
-        <Label x:Name="numInState" Content="______" HorizontalAlignment="Left" Margin="256,36,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="bname" HorizontalAlignment="Left" Height="23" Margin="105,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="state" HorizontalAlignment="Left" Height="23" Margin="281,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
+        <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="377,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Number of business in the same state:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="246"/>
+        <Label Content="Number of business in the same city:" HorizontalAlignment="Left" Margin="313,44,0,0" VerticalAlignment="Top" Width="215"/>
+        <Label x:Name="numInState" Content="______" HorizontalAlignment="Left" Margin="261,41,0,0" VerticalAlignment="Top"/>
         <Label x:Name="numInCity" Content="______" HorizontalAlignment="Left" Margin="542,41,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="reviewGrid" HorizontalAlignment="Left" Height="342" Margin="10,67,0,0" VerticalAlignment="Top" Width="772"/>
+        <DataGrid x:Name="reviewGrid" HorizontalAlignment="Left" Height="216" Margin="10,81,0,0" VerticalAlignment="Top" Width="772"/>
+        <Label x:Name="label" Content="Friends Who Reviewed This Business" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.577" Height="28" Width="215"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="215" Margin="10,330,0,0" VerticalAlignment="Top" Width="772"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="284" Margin="820,58,0,0" TextWrapping="Wrap" Text="Review Text" VerticalAlignment="Top" Width="302"/>
+        <Label x:Name="label1" Content="New Review" HorizontalAlignment="Left" Margin="820,21,0,0" VerticalAlignment="Top" Width="105"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="25" Margin="902,357,0,0" VerticalAlignment="Top" Width="135"/>
+        <Label x:Name="label2" Content="Rating:" HorizontalAlignment="Left" Height="27" Margin="826,355,0,0" VerticalAlignment="Top" Width="71"/>
+        <Button x:Name="button" Content="Add Review" HorizontalAlignment="Left" Height="24" Margin="872,398,0,0" VerticalAlignment="Top" Width="198" Click="button_Click"/>
 
 
     </Grid>
