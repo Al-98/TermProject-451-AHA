@@ -294,7 +294,7 @@ namespace milestone1
         private void button1_Click(object sender, RoutedEventArgs e)
         {
            
-            if (dataGrid.Items != null)
+            if (dataGrid.Items.Count > 0)
             {
                 businessGrid.Items.Clear();
 
@@ -309,11 +309,27 @@ namespace milestone1
 
                 executeQuery(sqlStr, addGridRow);
             }
+            else
+            {
+
+                businessGrid.Items.Clear();
+                categoryGrid.Items.Clear();
+
+
+                if (ZipcodeList.SelectedIndex > -1)
+                {
+                    string sqlStr = "SELECT name, state, city, businessid FROM business WHERE state = '" + stateList.SelectedItem.ToString() + "' AND city = '" + cityList.SelectedItem.ToString() + "' ORDER by name; ";
+                    executeQuery(sqlStr, addGridRow);
+
+                    string sqlStr2 = "SELECT distinct category FROM iscat WHERE  iscat.businessid in (SELECT businessid from business WHERE state = '" + stateList.SelectedItem.ToString() + "' AND city = '" + cityList.SelectedItem.ToString() + "'AND Zipcode = '" + ZipcodeList.SelectedItem.ToString() + "');";
+                    executeQuery(sqlStr2, addCatRow);
+
+                }
+            }
         }
 
         private void remove_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void typeName_TextChanged(object sender, TextChangedEventArgs e)
@@ -333,6 +349,40 @@ namespace milestone1
 
         private void listUserIds_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            FriendGrid.Items.Clear();
+            FavoriteGrid.Items.Clear();
+            dataGrid.Items.Clear();
+            StarsText.Clear();
+            FansText.Clear();
+            NameText.Clear();
+            YelSinceText.Clear();
+            LatText.Clear();
+
+            if (listUserIds.SelectedIndex>-1)
+            {
+                string info = "select firstname, avgstars, joindate, lat, long from users where userid= '" + listUserIds.SelectedItem.ToString() + "';";
+            }
+        }
+
+        private void addFavorite(NpgsqlDataReader R)
+        {
+
+        }
+
+        private void button22_Click(object sender, RoutedEventArgs e)
+        {
+            string currentUser = "";   //"---1lKK3aKOuomHnwAkAow";
+            if (listUserIds.SelectedIndex > -1)
+            {
+                if (businessGrid.SelectedIndex > -1)
+                {
+                    Business B = businessGrid.Items[businessGrid.SelectedIndex] as Business;
+                    currentUser = listUserIds.SelectedItem.ToString();
+
+                    string SqlStr = "Insert Into favorite Values ('" + currentUser + "', '" + B.bid.ToString() +"');";
+                    executeQuery(SqlStr, addFavorite);
+                } 
+            }
         }
     }
 }

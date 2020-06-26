@@ -38,7 +38,7 @@
                 <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="76,466,0,0" VerticalAlignment="Top" Width="227" Height="26"/>
                 <Button x:Name="button2" Content="Check-in" HorizontalAlignment="Left" Margin="475,466,0,0" VerticalAlignment="Top" Width="75"/>
                 <Button x:Name="button21" Content="Show Reviews" HorizontalAlignment="Left" Margin="663,466,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="button22" Content="AddtoFavorites" HorizontalAlignment="Left" Margin="569,466,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="button22" Content="AddtoFavorites" HorizontalAlignment="Left" Margin="569,466,0,0" VerticalAlignment="Top" Width="75" Click="button22_Click"/>
                 <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="210" Margin="773,242,0,0" VerticalAlignment="Top" Width="175"/>
                 <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="50,517,0,0" TextWrapping="Wrap" Text="Business" VerticalAlignment="Top" Width="391"/>
                 <TextBox x:Name="textBox11" HorizontalAlignment="Left" Height="33" Margin="50,545,0,0" TextWrapping="Wrap" Text="Address" VerticalAlignment="Top" Width="606"/>
