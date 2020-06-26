@@ -408,6 +408,13 @@ namespace milestone1
 
                 dataGrid.Items.Remove(dataGrid.Items[dataGrid.SelectedIndex]);
             }
+
+            if (dataGrid.Items!=null) {
+                businessGrid.Items.Clear();
+                string sqlStr3 = MsqlStr + "Order BY name;";
+
+                executeQuery(sqlStr3, addGridRow);
+            }
         }
 
         private void typeName_TextChanged(object sender, TextChangedEventArgs e)
@@ -513,6 +520,44 @@ namespace milestone1
                 string TsqlStr = MpsqlStr + "ORDER BY " + filterby[comboBox.SelectedIndex] + ";";
                 Console.WriteLine(TsqlStr);
                 executeQuery(TsqlStr, addGridRow);
+            }
+        }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            if (businessGrid.SelectedIndex > -1)
+            {
+                DayOfWeek day = DateTime.Now.DayOfWeek;
+                string theday = day.ToString();
+                int time = DateTime.Now.Hour;
+                Console.WriteLine(time.ToString());
+                string thetime = time.ToString() + ":00";
+                
+                Business B = businessGrid.Items[businessGrid.SelectedIndex] as Business;
+                string sqlStr = "UPDATE checkin SET numofcheckins= (SELECT numofcheckins FROM checkin WHERE checkin.businessid='" + B.bid.ToString() + "' AND checkin.checkintime='" + thetime + "' AND checkin.weekday='" + theday + "')+1 WHERE businessid='" + B.bid.ToString() + "' AND checkintime='" + thetime + "' AND weekday='" + theday + "';";
+                executeQuery(sqlStr, DoseNothing);
+
+                string sqlStr2 = "insert into checkin values ('" + B.bid.ToString() + "' , '" + theday + "','" + thetime + "',1);";
+                executeQuery(sqlStr2, DoseNothing);
+
+                if(MpsqlStr != null)
+                {
+                    businessGrid.Items.Clear();
+                    if (MsqlStr != null)
+                    {
+                        string sqlStr3 = MsqlStr + "Order BY name;";
+
+                        executeQuery(sqlStr3, addGridRow);
+
+                    }
+                    else
+                    {
+                        //MpsqlStr = "SELECT name, state, city, businessid, avgreview,numofreviews, numofcheckins FROM business WHERE state = '" + stateList.SelectedItem.ToString() + "' AND city = '" + cityList.SelectedItem.ToString() + "' AND zipcode='" + ZipcodeList.SelectedItem.ToString() + "'";
+                        string sqlStr4 = MpsqlStr + "ORDER BY name;";
+                        executeQuery(sqlStr4, addGridRow);
+                    }
+                   
+                }
             }
         }
     }

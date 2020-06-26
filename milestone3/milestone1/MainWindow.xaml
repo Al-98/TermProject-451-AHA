@@ -29,14 +29,14 @@
                 <DataGrid x:Name="categoryGrid" HorizontalAlignment="Right" Height="111" Margin="0,54,319,0" VerticalAlignment="Top" Width="176" />
                 <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="111" Margin="722,54,0,0" VerticalAlignment="Top" Width="163"/>
                 <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="475,188,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-                <Button x:Name="button11" Content="Reomve" HorizontalAlignment="Left" Margin="576,188,0,0" VerticalAlignment="Top" Width="75" Click="remove_Click"/>
+                <Button x:Name="button11" Content="Remove" HorizontalAlignment="Left" Margin="576,188,0,0" VerticalAlignment="Top" Width="75" Click="remove_Click"/>
 
                 <Button x:Name="button1" Content="Search" HorizontalAlignment="Left" Margin="722,188,0,0" VerticalAlignment="Top" Width="163" Click="button1_Click"/>
 
 
                 <Label Content="Sort By:" HorizontalAlignment="Left" Margin="10,466,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="76,466,0,0" VerticalAlignment="Top" Width="227" Height="26" SelectionChanged="comboBox_SelectionChanged"/>
-                <Button x:Name="button2" Content="Check-in" HorizontalAlignment="Left" Margin="475,466,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="button2" Content="Check-in" HorizontalAlignment="Left" Margin="475,466,0,0" VerticalAlignment="Top" Width="75" Click="button2_Click"/>
                 <Button x:Name="button21" Content="Show Reviews" HorizontalAlignment="Left" Margin="663,466,0,0" VerticalAlignment="Top" Width="75" Click="button21_Click"/>
                 <Button x:Name="button22" Content="AddtoFavorites" HorizontalAlignment="Left" Margin="569,466,0,0" VerticalAlignment="Top" Width="75" Click="button22_Click"/>
                 <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="210" Margin="773,242,0,0" VerticalAlignment="Top" Width="175"/>
